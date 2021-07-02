@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    
+   <table>
+   
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>nombre</th>
+				<th>credito</th>
+				<th>fecha</th>
+				<th>editar</th>
+				<th>eliminar</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		
+		<tr th:each="curso: ${cursos}">
+
+			<td th:text = "${curso.id}"></td>
+			<td th:text = "${curso.nombre}"></td>
+			<td th:text = "${curso.credito}"></td>
+			<td th:text = "${curso.fecha}"></td>
+			<td><a th:href="@{/form/} + ${curso.id}" th:text="editar"></a></td>
+			<td><a th:href="@{/eliminar/} + ${curso.id}" th:text="eliminar"></a></td>
+
+		</tr>
+		
+		</tbody>
+   
+   
+   </table>
+   
+   
+    
+    
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title th:text="'APPLY - ' + ${titulo}"></title>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header th:fragment="header" id="head">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <a th:href="@{/}">
+                        <div class="content-logo">
+                            <img src="assets/img/icono.png"  />
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h4><span>Telefono TI: </span> 01-4589-987-567</h4>
+                    <h4><span>E-mail TI:</span> soporte@domain.com</h4>
+                </div>
+                
+            </div>
+        </div>
+
+    </header>
+    
+
+    <main th:fragment="main" class="container">
+
+
+
+    </main>
+
+
+    <div class="row" th:fragment="admin-menu">
+        <div class="col-sm-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item active d-flex justify-content-between"> <span>Salir</span> <i class="fas fa-sign-out-alt fa-2x"></i>
+                </a>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active justify-content-between">Sistemas</li>
+                    </ol>
+                </nav>
+                <a href="admin-dashboard.html" class="list-group-item"><i class="fas fa-sliders-h"></i> <span>Felipe Villalba </span></a>
+                <a href="admin-open-tickets.html" class="list-group-item">Todos los Tickets</a>
+                <a href="admin-support-cat.html" class="list-group-item"><i class="fas fa-user-friends"></i> Gestor de usuarios</a>
+                <a href="admin-change-password.html" class="list-group-item"><i class="fas fa-laptop"></i> Gestor de equipos</a>
+
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="script" th:fragment="script">
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="fontawesome/js/all.min.js"></script>
+    </div>
+
+</body>
+</html>

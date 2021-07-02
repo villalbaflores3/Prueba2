@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout ::head">
+</head>
+<body>
+    <header th:replace="layout/layout ::header"></header>    
+    
+    
+    <main class="main">
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Dashboard</a>
+            </li>
+        </ul>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-md-8 col-sm-6 col-12"> 
+                        <div class="row  noti-div">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-12  text-center">
+                                <a th:href="@{/users}">
+                                    <div class="alert alert-success box d-flex align-items-center justify-content-center flex-wrap align-content-center">
+                                        <i class="fas fa-user-friends fa-4x"></i>
+                                        <span class="label label-info">USUARIOS</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-12  text-center">
+                                <a href="admin-open-tickets.html">
+                                    <div class="alert alert-danger box d-flex align-items-center justify-content-center flex-wrap align-content-center">
+                                        <i class="fas fa-ticket-alt fa-4x"></i>
+                                        <span class="label label-warning">  45 TICKETS ABIERTOS</span>
+                                    </div>
+                                </a>
+                            </div>            
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-12  text-center">
+                                <a href="admin-support-cat.html">
+                                    <div class="alert alert-warning box d-flex align-items-center justify-content-center">
+                                        <i class="fa fa-briefcase fa-4x"></i>
+                                        <span>INVENTARIO</span>                  
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-12 text-center">
+                                <a href="admin-user-list.html">
+                                    <div class="alert alert-info d-flex align-items-center justify-content-center justify-content-center flex-wrap align-content-center">
+                                        <i class="fas fa-sync-alt fa-4x"></i>        
+                                        <span class="label label-danger">Vinculación</span>
+                                    </div>
+                                </a>
+                            </div>
+        
+        
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                        <div th:replace="layout/layout :: admin-menu"> </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </section>
+    
+    </main>
+
+
+<div th:replace= "layout/layout :: script"></div>
+</body>
+</html>
