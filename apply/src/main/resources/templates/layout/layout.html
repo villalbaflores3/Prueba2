@@ -11,7 +11,6 @@
     <link href="/assets/css/style.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header th:fragment="header" id="head">
@@ -21,7 +20,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <a th:href="@{/}">
                         <div class="content-logo">
-                            <img src="assets/img/icono.png"  />
+                            <img th:src="@{/assets/img/icono.png}"  />
                         </div>
                     </a>
                 </div>
@@ -57,17 +56,24 @@
                 <a href="admin-open-tickets.html" class="list-group-item">Todos los Tickets</a>
                 <a href="admin-support-cat.html" class="list-group-item"><i class="fas fa-user-friends"></i> Gestor de usuarios</a>
                 <a href="admin-change-password.html" class="list-group-item"><i class="fas fa-laptop"></i> Gestor de equipos</a>
-
             </div>
             
         </div>
     </div>
 
     <div id="script" th:fragment="script">
-        <script src="assets/js/jquery-1.10.2.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
-        <script src="fontawesome/js/all.min.js"></script>
+        <script src="/assets/js/jquery-1.10.2.js"></script>
+        <script src="/assets/js/bootstrap.js"></script>
+        <script src="/fontawesome/js/all.min.js"></script>
+        <script src="/assets/js/admin.js"></script>
+
     </div>
 
+
+    <div id="script-user" th:fragment="script-user">
+        <script src="/assets/js/jquery-1.10.2.js"></script>
+        <script src="/assets/js/bootstrap.js"></script>
+        <script src="/fontawesome/js/all.min.js"></script>
+    </div>
 </body>
 </html>

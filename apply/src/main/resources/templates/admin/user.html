@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout ::head">
+</head>
+<body>
+    <header th:replace="layout/layout ::header"></header>    
+ 
+    <section id="main">
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin}">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/empleado/show}">Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Usuario</a>
+            </li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-md-8 col-sm-6 col-12">
+
+                    <div class="hr-div"> <hr />
+                    </div>
+
+
+                    <div class="card bg-light">
+                        <div class="card-header" th:text = "${titulo}"></div>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:text = "${empleado.nombre} + ' ' + ${empleado.apellido}" style="text-align: center;"></li>
+                            <li class="list-group-item"  th:text = "${empleado.correo}" style="text-align: center;"></li>
+                            <li class="list-group-item" style="text-align: center;">Licencia: <span  th:text = "${empleado.licencia365}"  style="text-align: center;"></span></li>
+                            <li class="list-group-item" th:text = "${empleado.clasificacion}" style="text-align: center;"></li>
+                        </ul>
+                        <div class="table-responsive">
+                            
+                        <div class="card-header" th:text = "'Dispositivos asignados'" style="text-align: center;"></div>
+                        <div th:if="${#lists.isEmpty(empleado.equipos)}" class="alert alert-warning my-4" th:text="'No hay dispositivos asignados'" style="padding: 0px;"><a href="http://">s</a></div>
+                            <table  th:if="${not #lists.isEmpty(empleado.equipos)}"  class="table table-striped table-bordered table-hover">
+                                <thead>
+                                        <div style="display: flex; width: 100%; justify-content: center;">
+                                            <i class="fas fa-desktop fa-3x" style="padding: 10px 0px;" ></i>  
+                                        </div>
+      
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>MARCAR</th>
+                                        <th>MODELO</th>
+                                        <th>RAM</th>
+                                        <th>PROCESADOR</th>
+                                        <th>VELOCIDAD</th>
+                                        <th>DD</th>
+                                        <th># SERIE</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each ="equipo: ${empleado.equipos}">
+                                        <td th:text="${equipo.id}"></td>
+                                        <td th:text="${equipo.marca}"></td>
+                                        <td th:text="${equipo.modelo}"></td>
+                                        <td th:text="${equipo.ram} + ' gb'"></td>
+                                        <td th:text="${equipo.procesador}"></td>
+                                        <td th:text="${equipo.velocidadProcesador} + 'ghz'"></td>
+                                        <td th:text="${equipo.ddRam + 'gb'}"></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                    <div th:replace="layout/layout :: admin-menu"> </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="layout/layout :: script"></div>
+</body>
+</html>

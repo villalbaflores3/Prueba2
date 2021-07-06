@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -24,7 +25,7 @@ private static final long serialVersionUID= 1L;
 
 
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
 @NotEmpty
@@ -53,10 +54,59 @@ private List<Equipo> equipos;
 
 
 
+public List<Equipo> getEquipos() {
+    return equipos;
+}
+
+
+
+
+
+
+
+
+
+public void setEquipos(List<Equipo> equipos) {
+    this.equipos = equipos;
+}
+
+
 @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
 private List<Ticket> tickets;
 
 
+
+@PrePersist
+public void prePersist(){
+
+    
+}
+
+
+
+
+
+
+
+
+
+public Empleado(){
+    tickets = new ArrayList<Ticket>();
+    equipos = new ArrayList<Equipo>();
+    }
+    
+    public Empleado(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String password,
+            @Email String correo, String licencia365, String clasificacion, @NotEmpty boolean equipado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.password = password;
+        this.correo = correo;
+        this.licencia365 = licencia365;
+        this.clasificacion = clasificacion;
+        this.equipado = equipado;
+    }
+    
 
 
 public Long getId() {
@@ -67,29 +117,6 @@ public void setId(Long id) {
     this.id = id;
 }
 
-
-
-
-
-
-
-
-public Empleado(){
-tickets = new ArrayList<Ticket>();
-equipos = new ArrayList<Equipo>();
-}
-
-public Empleado(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String password,
-        @Email String correo, String licencia365, String clasificacion, @NotEmpty boolean equipado) {
-    this.id = id;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.password = password;
-    this.correo = correo;
-    this.licencia365 = licencia365;
-    this.clasificacion = clasificacion;
-    this.equipado = equipado;
-}
 
 public String getNombre() {
     return nombre;

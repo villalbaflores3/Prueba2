@@ -47,6 +47,24 @@ public class EmpleadoImpl implements IEmpleado {
 
         
     }
+
+
+
+    @Override
+    @Transactional
+    public void save(Empleado empleado) {
+        em.persist(empleado);
+        
+    }
+
+
+
+    @Override
+    public Empleado findOne(Long id) {
+    
+    return    em.find(Empleado.class, id);
+        
+    }
     
 
 

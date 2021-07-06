@@ -8,10 +8,10 @@
     <section id="main">
         <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/admin}">Dashboard</a>
+              <a class="nav-link" th:href="@{/admin}">Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">usuarios</a>
+                <a class="nav-link disabled" href="#">Usuarios</a>
             </li>
         </ul>
         <div class="container">
@@ -20,7 +20,7 @@
 
                      <h3>Lista de todos los usuarios: <span class="label label-danger" th:text="${contador}"></span> 
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-info"><i class="fas fa-plus fa-3x"></i>
+                            <a th:href="@{/empleado/form}" class="btn btn-info"><i class="fas fa-plus fa-2x"></i></a>
                             </button>
                             <nav class="navbar navbar-light bg-light">
                                 <form class="form-inline d-flex justify-content-between">
@@ -47,13 +47,13 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each ="empleado: ${empleados}">
-                                            <td th:text ="${empleado.id}"></td>
+                                            <td class="bg-info"><a th:href="@{'/empleado/show/' + ${empleado.id}}"  th:text ="${empleado.id}" class="bg-info text-white"></a> </td>
                                             <td th:text ="${empleado.nombre}"></td>
                                             <td th:text ="${empleado.apellido}"><span class="label label-info"></span></td>
                                             <td th:text ="${empleado.correo}"></td>
                                             <td th:text ="${empleado.clasificacion}"></td>
                                             <td th:if="${empleado.equipado}"><a th:href="@{/equipo/{id}}">Ver</a></td>                                            
-                                            <td th:unless ="${empleado.equipado}"><a th:href="@{/asignacion/empleado.id}">Asignar equipo</a></td>
+                                            <td th:unless ="${empleado.equipado}"><a th:href="@{/asignacion/ + ${empleado.id}}">Asignar equipo</a></td>
                                             <td ><a th:href="@{/editar}"><i class="fas fa-edit"></i></a>
                                                 <a th:href="@{/borrar}"><i class="fas fa-trash-alt"></i></a>
                                             </td>
