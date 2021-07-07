@@ -51,7 +51,7 @@ public class EmpleadoImpl implements IEmpleado {
 
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     public void save(Empleado empleado) {
         em.persist(empleado);
         

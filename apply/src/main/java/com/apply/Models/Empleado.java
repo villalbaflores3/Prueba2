@@ -34,7 +34,7 @@ private String nombre;
 @NotEmpty
 private String apellido;
 
-@NotEmpty
+
 private String password;
 
 @Email

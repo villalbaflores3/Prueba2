@@ -2,22 +2,37 @@ package com.apply.Models.Dao;
 
 import java.util.Optional;
 
-public class Equipo  implements IEquipo{
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.apply.Models.Equipo;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class Equipoimpl implements IEquipo{
+
+    @PersistenceContext
+    private EntityManager em;
+    
+
+
+
 
     @Override
-    public <S extends com.apply.Models.Equipo> S save(S entity) {
+    public <S extends Equipo> S save(S entity) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public <S extends com.apply.Models.Equipo> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends Equipo> Iterable<S> saveAll(Iterable<S> entities) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Optional<com.apply.Models.Equipo> findById(Long id) {
+    public Optional<Equipo> findById(Long id) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -29,13 +44,13 @@ public class Equipo  implements IEquipo{
     }
 
     @Override
-    public Iterable<com.apply.Models.Equipo> findAll() {
+    public Iterable<Equipo> findAll() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Iterable<com.apply.Models.Equipo> findAllById(Iterable<Long> ids) {
+    public Iterable<Equipo> findAllById(Iterable<Long> ids) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -53,7 +68,7 @@ public class Equipo  implements IEquipo{
     }
 
     @Override
-    public void delete(com.apply.Models.Equipo entity) {
+    public void delete(Equipo entity) {
         // TODO Auto-generated method stub
         
     }
@@ -65,7 +80,7 @@ public class Equipo  implements IEquipo{
     }
 
     @Override
-    public void deleteAll(Iterable<? extends com.apply.Models.Equipo> entities) {
+    public void deleteAll(Iterable<? extends Equipo> entities) {
         // TODO Auto-generated method stub
         
     }
@@ -76,4 +91,6 @@ public class Equipo  implements IEquipo{
         
     }
     
+
+
 }

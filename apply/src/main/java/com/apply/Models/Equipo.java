@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -50,6 +52,32 @@ private Long velocidadProcesador;
 
 @Column(name = "equipo_asignado")
 private boolean equipoAsignado = false;
+
+
+@OneToOne
+@JoinColumn(name = "categoria_id")
+Categoria categoria;
+
+
+public String getSerie() {
+    return serie;
+}
+
+
+
+
+
+
+
+public void setSerie(String serie) {
+    this.serie = serie;
+}
+
+
+
+
+
+private String serie;
 
 
 

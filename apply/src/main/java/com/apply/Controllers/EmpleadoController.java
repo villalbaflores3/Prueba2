@@ -21,7 +21,6 @@ public class EmpleadoController {
     @Autowired
     private IEmpleado empleadoDao;
 
-
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String pageUsersAdmin(Model model) {        
         model.addAttribute("titulo", "Gestor de usuarios");
@@ -40,21 +39,23 @@ public class EmpleadoController {
             return "admin/form";
     }
 
+  /*  
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
+    
     public String guardar(Empleado empleado) {
         empleadoDao.save(empleado);
-        return  "redirect:empleados/show";
+        return  "redirect:/show";
     }
+*/
 
-
-    @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String verEmpleado(@PathVariable(value = "id") Long id, Model model) {
         Empleado empleado = null;
         if (id > 0 ) {
             empleado = empleadoDao.findOne(id);
         }else{
-            return "redirect:/show";
+            return "redirect:/";
         }
 
         model.addAttribute("empleado", empleado);
