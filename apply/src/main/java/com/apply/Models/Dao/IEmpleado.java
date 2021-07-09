@@ -10,6 +10,7 @@ public interface IEmpleado  {
     public Number count();
     public void save(Empleado empleado);
     public Empleado findOne(Long id);
+    public void delete(Long id);
 
     
 

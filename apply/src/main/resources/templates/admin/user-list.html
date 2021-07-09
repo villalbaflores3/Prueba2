@@ -54,8 +54,8 @@
                                             <td th:text ="${empleado.clasificacion}"></td>
                                             <td th:if="${empleado.equipado}"><a th:href="@{'/equipo/' +  ${empleado.id}}">Ver</a></td>                                            
                                             <td th:unless ="${empleado.equipado}"><a th:href="@{'/asignacion/' + ${empleado.id} }">Asignar equipo</a></td>
-                                            <td ><a th:href="@{/editar}"><i class="fas fa-edit"></i></a>
-                                                <a th:href="@{/borrar}"><i class="fas fa-trash-alt"></i></a>
+                                            <td ><a th:href="@{'/empleado/form/' + ${empleado.id}}"><i class="fas fa-edit"></i></a>
+                                                <a th:href="@{'/empleado/eliminar/' + ${empleado.id} }"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
             

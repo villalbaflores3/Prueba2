@@ -37,6 +37,8 @@ private String apellido;
 
 private String password;
 
+
+@Column(unique = true)
 @Email
 private String correo;
 

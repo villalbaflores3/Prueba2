@@ -34,14 +34,11 @@ public class EmpleadoImpl implements IEmpleado {
 
         Long cResults;
         try {
-
             Query query = em.createQuery("SELECT COUNT(*) FROM Empleado");
             cResults=(Long) query.getSingleResult();
-
             return cResults;
             
         } catch (Exception e) {
-
             return null;
         }
 
@@ -51,19 +48,34 @@ public class EmpleadoImpl implements IEmpleado {
 
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional()
     public void save(Empleado empleado) {
-        em.persist(empleado);
+
+        if (empleado.getId() != null  && empleado.getId() > 0) {
+                em.merge(empleado);
+        }else{
+
+            em.persist(empleado);
         
+        }
+
+
     }
-
-
 
     @Override
     public Empleado findOne(Long id) {
     
     return    em.find(Empleado.class, id);
         
+    }
+
+
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+      Empleado empleado = findOne(id);
+      em.remove(empleado); 
     }
     
 
