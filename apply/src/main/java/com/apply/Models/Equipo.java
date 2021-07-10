@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "equipos")
 public class Equipo  implements Serializable{
@@ -54,8 +56,8 @@ private Long velocidadProcesador;
 private boolean equipoAsignado = false;
 
 
-@OneToOne
-@JoinColumn(name = "categoria_id")
+@OneToOne()
+@JoinColumn(name = "equipo")
 Categoria categoria;
 
 

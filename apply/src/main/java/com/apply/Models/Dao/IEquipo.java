@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 
 @Primary
 public interface IEquipo extends CrudRepository<Equipo, Long>{
-    
+    public long count();
 }

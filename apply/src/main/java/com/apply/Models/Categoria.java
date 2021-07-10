@@ -26,6 +26,7 @@ public class Categoria implements Serializable {
 
     @NotEmpty
     private String nombre;
+
     
 
 

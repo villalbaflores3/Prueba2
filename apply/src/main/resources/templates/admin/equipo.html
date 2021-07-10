@@ -11,74 +11,44 @@
               <a class="nav-link" th:href="@{/admin}">Admin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Usuarios</a>
+                <a class="nav-link" th:href="@{/inventario}">Inventario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Equipo</a>
             </li>
         </ul>
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 col-md-8 col-sm-6 col-12">
 
-                     <h3>Lista de todos los usuarios: <span class="label label-danger" th:text="${contador}"></span> 
-                        <div class="d-flex justify-content-between">
-                            <a th:href="@{/empleado/form}" class="btn btn-info"><i class="fas fa-plus fa-2x"></i></a>
-                            </button>
-                            <nav class="navbar navbar-light bg-light">
-                                <form class="form-inline d-flex justify-content-between">
-                                  <input class="form-control mr-sm-2" type="text" placeholder="Busqueda">
-                                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                                </form>
-                              </nav>
+                    <div class="hr-div"> <hr />
+                    </div>
+
+
+                    <div class="card bg-light">
+                        <div class="card-header" th:text = "${titulo}"></div>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:text = "${equipo.marca} " style="text-align: center;"></li>
+                            <li class="list-group-item"  th:text = "${equipo.modelo}" style="text-align: center;"></li>
+                            <li class="list-group-item"  style="display: flex; justify-content: space-around;">
+                                <span  th:text = "'RAM: '+ ${equipo.ram} +  'GB'"></span>       
+                                <span  th:text = "'DD: '+ ${equipo.ddRam} +  'GB'"></span>       
+                            </li>
+
+                            <li class="list-group-item"  style="display: flex; justify-content: space-around;">
+                                <span  th:text = "'PROCESADOR: '+${equipo.procesador} "></span>            
+                                <span  th:text = "'VEL: '+${equipo.velocidadProcesador} + 'GHz'"></span>    
+                            </li>
+
+ 
+                        </ul>
+                        <div class="table-responsive">
+                            
+                        <div class="card-header" th:text = "'Dispositivos asignados'" style="text-align: center;"></div>
+
                         </div>
-                    </h3>
-                        <div class="hr-div"> <hr />
-                        </div>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>NOMBRE</th>
-                                            <th>APELLIDO</th>
-                                            <th>CORREO</th>
-                                            <th>CLASIFICACION</th>
-                                            <th>EQUIPO</th>
-                                            <th>OPCIONES</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each ="empleado: ${empleados}">
-                                            <td class="bg-info"><a th:href="@{'/empleado/' + ${empleado.id}}"  th:text ="${empleado.id}" class="bg-info text-white"></a> </td>
-                                            <td th:text ="${empleado.nombre}"></td>
-                                            <td th:text ="${empleado.apellido}"><span class="label label-info"></span></td>
-                                            <td th:text ="${empleado.correo}"></td>
-                                            <td th:text ="${empleado.clasificacion}"></td>
-                                            <td th:if="${empleado.equipado}"><a th:href="@{'/equipo/' +  ${empleado.id}}">Ver</a></td>                                            
-                                            <td th:unless ="${empleado.equipado}"><a th:href="@{'/asignacion/' + ${empleado.id} }">Asignar equipo</a></td>
-                                            <td ><a th:href="@{/editar}"><i class="fas fa-edit"></i></a>
-                                                <a th:href="@{/borrar}"><i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                        </tr>
-            
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div>
-                                <nav aria-label="...">
-                                    <ul class="pagination">
-                                      <li class="page-item disabled">
-                                            <a class="page-link" href="#!" tabindex="-1">Previous</a>
-                                      </li>
-                                      <li class="page-item"><a class="page-link" href="#!">1</a></li>
-                                      <li class="page-item active">
-                                        <a class="page-link" href="#!">2 <span class="sr-only">(current)</span></a>
-                                      </li>
-                                      <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#!">Next</a>
-                                      </li>
-                                    </ul>
-                                  </nav>
-                            </div>
+                    </div>
+
 
                 </div>
 
