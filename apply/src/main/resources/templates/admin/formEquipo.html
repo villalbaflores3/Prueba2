@@ -37,14 +37,13 @@
                                             <input type="text" name="marca" th:field="*{marca}">
                                             <small class="form-text text-danger" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></small>
                                         </td>
-                                    </tr>
-                                    <tr>
                                         <td>
                                             <label for="modelo">Modelo</label>
                                             <input type="text" name="modelo" th:field="*{modelo}">
                                             <small class="form-text text-danger" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></small>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td>
                                             <div>
@@ -74,8 +73,8 @@
                                         </td>
                                         <td>
                                             <div>
-                                                <label for="nombre">VELOCIDAD (GHz)</label>
-                                                <input type="text" name="nombre" th:field="*{velocidadProcesador}">
+                                                <label for="velocidad">VELOCIDAD (GHz)</label>
+                                                <input type="number" name="velocidad" th:field="*{velocidadProcesador}" step=".01"  th:value="${equipo.velocidadProcesador}">
                                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('velocidadProcesador')}" th:errors="*{velocidadProcesador}"></small>
               
                                             </div>

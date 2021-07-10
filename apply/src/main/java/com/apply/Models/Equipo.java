@@ -41,16 +41,16 @@ private String modelo;
 @Column(name = "dd_gb")
 private int ddRam;
 
-@NotEmpty
-private int ram;
+@NotNull
+private long ram;
 
-@NotEmpty
+@NotNull
 private String procesador;
 
 
-@NotNull
+@NotEmpty
 @Column(name = "velocidad_procesador")
-private Long velocidadProcesador;
+private String velocidadProcesador;
 
 @Column(name = "equipo_asignado")
 private boolean equipoAsignado = false;
@@ -141,7 +141,7 @@ public Equipo() {
 
 
 public Equipo(Long id, @NotEmpty String marca, @NotEmpty String modelo, int ddRam, @NotEmpty int ram,
-        @NotEmpty String procesador, @NotNull Long velocidadProcesador, boolean equipoAsignado, Date fechaAlta) {
+        @NotEmpty String procesador, @NotNull String velocidadProcesador, boolean equipoAsignado, Date fechaAlta) {
     this.id = id;
     this.marca = marca;
     this.modelo = modelo;
@@ -223,7 +223,7 @@ public void setDdRam(int ddRam) {
 
 
 
-public int getRam() {
+public long getRam() {
     return ram;
 }
 
@@ -231,7 +231,7 @@ public int getRam() {
 
 
 
-public void setRam(int ram) {
+public void setRam(long ram) {
     this.ram = ram;
 }
 
@@ -255,7 +255,7 @@ public void setProcesador(String procesador) {
 
 
 
-public Long getVelocidadProcesador() {
+public String getVelocidadProcesador() {
     return velocidadProcesador;
 }
 
@@ -263,7 +263,7 @@ public Long getVelocidadProcesador() {
 
 
 
-public void setVelocidadProcesador(Long velocidadProcesador) {
+public void setVelocidadProcesador(String velocidadProcesador) {
     this.velocidadProcesador = velocidadProcesador;
 }
 
