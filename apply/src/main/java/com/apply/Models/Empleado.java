@@ -24,6 +24,10 @@ public class Empleado  implements Serializable{
 private static final long serialVersionUID= 1L;
 
 
+
+
+
+
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
@@ -45,16 +49,34 @@ private String correo;
 @Column(name = "licencia_365")
 private String licencia365;
 
-private String  clasificacion;
 
+private String  clasificacion;
 @Column(name = "equipado", columnDefinition = "boolean default false")
 private boolean  equipado = false;
 
+/** */
 @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
 private List<Equipo> equipos;
 
+@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+private List<Asignacion> asignaciones;
 
 
+
+
+
+
+public void addAsignacion(Asignacion asignacion){
+    asignaciones.add(asignacion);
+}
+
+public List<Asignacion> getAsignaciones() {
+    return asignaciones;
+}
+
+public void setAsignaciones(List<Asignacion> asignaciones) {
+    this.asignaciones = asignaciones;
+}
 
 public List<Equipo> getEquipos() {
     return equipos;
@@ -71,6 +93,7 @@ public List<Equipo> getEquipos() {
 public void setEquipos(List<Equipo> equipos) {
     this.equipos = equipos;
 }
+
 
 
 @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
@@ -91,11 +114,11 @@ public void prePersist(){
 
 
 
-
 public Empleado(){
     tickets = new ArrayList<Ticket>();
     equipos = new ArrayList<Equipo>();
-    }
+    asignaciones = new ArrayList<Asignacion>()  ;
+}
     
     public Empleado(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String password,
             @Email String correo, String licencia365, String clasificacion, @NotEmpty boolean equipado) {
