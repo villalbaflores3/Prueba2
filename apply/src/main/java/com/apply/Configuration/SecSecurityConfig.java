@@ -36,14 +36,16 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/css/**, /js/**", "/img/**", "/login/").permitAll().
-        antMatchers("admin/**", "/user/**").hasAnyRole("ADMIN").   
-        antMatchers("empleado/**").hasAnyRole("ADMIN").
+        http.authorizeRequests().antMatchers("/", "/assets/**").permitAll().
+        antMatchers("admin/*").access("hasRole('ADMIN')").   
+        antMatchers("empleado/*").access("hasRole('ADMIN')").   
+        antMatchers("/user/**").hasAnyRole("ADMIN", "USER").
         anyRequest().authenticated().
         and().
-        formLogin().permitAll().
+        formLogin().loginPage("/login").defaultSuccessUrl("/user", true).permitAll().
         and().
-        logout().permitAll();
+        logout().permitAll().and()
+        .exceptionHandling().accessDeniedPage("/error_403");
 
 
     }

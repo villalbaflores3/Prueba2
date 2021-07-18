@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="layout/layout ::head">
 </head>
 
 
 <body>
-    <header th:replace="layout/layout ::header"></header>    
+    <header th:replace="layout/layout ::header"></header>
 
     <main th:replace="layout/layout ::main">
     </main>
@@ -13,42 +14,45 @@
     <div class="container login">
         <div class="row">
             <div class="col-lg-8  col-sm-12 d-flex justify-content-center">
-                <div class="content-login">
-                    <img src="assets/img/moniter.png" class="img-responsive img-max-width" />
-                    <h3>Account Login </h3>
-                    <form  class="form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" required="required" placeholder="Email" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" required="required" placeholder="Clave de acceso" />
-                        </div> 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btm-width">Entrar</button>
-                        </div>
-                    </form>
+                <form th:action="@{/login}" method="POST" class="form"  style="width: 60%;"> 
+                    <div class="content-login">
+                        <img src="assets/img/moniter.png" class="img-responsive img-max-width" />
+                        <h3>Account Login </h3>
+                            <div class="form-group">
+                                <input type="text" class="form-control" required="required" placeholder="usuario" name="username" id="username"  autofocus/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" required="required" name="password" id="password"
+                                    placeholder="Clave de acceso" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btm-width">Entrar</button>
+                            </div>
+                    </div>
 
-                </div>
+                </form>
+
 
             </div>
             <div class="col-lg-4  col-sm-12">
 
                 <h3 class="opaque">Mandar solicitud</h3>
-                <form  class="form">
+
+                <div class="form">
                     <div class="form-group">
-                        <input type="text" class="form-control" required="required" placeholder="Nombre" />
+                        <input type="text" class="form-control" required="required" placeholder="Nombre"  />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" required="required" placeholder="Apellido" />
-                    </div> 
+                    </div>
                     <div class="form-group">
                         <input type="password" class="form-control" required="required" placeholder="Autorización" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-info">Solicitar Alta</button>
+                        <button type="button" class="btn btn-info">Solicitar Alta</button>
                     </div>
-                    
-                </form>
+
+                </div>
 
             </div>
 
@@ -57,8 +61,9 @@
 
 
     </div>
-  
-    <div th:replace= "layout/layout ::script">
+
+    <div th:replace="layout/layout ::script">
     </div>
 </body>
+
 </html>

@@ -9,19 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PageController {
 
 
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String pageIndex(Model model) {
-        model.addAttribute("titulo", "Inicio de sesion");
-        return "index-user";
-    }
-
     
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String pageHomeUser(Model model) {
         model.addAttribute("titulo", "Home");
         return "user-dashboard";
     }
+
+
+
+
+    
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String pageHomeAdmin(Model model) {

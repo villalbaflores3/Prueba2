@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -45,14 +45,21 @@
     <div class="row" th:fragment="admin-menu">
         <div class="col-sm-12">
             <div class="list-group">
-                <a href="#" class="list-group-item active d-flex justify-content-between"> <span>Salir</span> <i class="fas fa-sign-out-alt fa-2x"></i>
+                <div sec:authorize ="isAuthenticated()">
+
+                    <form th:action="@{/logout}" method="POST">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <button type="submit" class="list-group-item active d-flex justify-content-between"> <span>Salir</span> <i class="fas fa-sign-out-alt fa-2x"></i></button>
+                    </form>
+                    
+                </div>
                 </a>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item active justify-content-between">Sistemas</li>
+                      <li class="breadcrumb-item active justify-content-between" sec:authentication ="principal.authorities"></li>
                     </ol>
                 </nav>
-                <a href="admin-dashboard.html" class="list-group-item"><i class="fas fa-sliders-h"></i> <span>Felipe Villalba </span></a>
+                <a href="admin-dashboard.html" class="list-group-item"><i class="fas fa-sliders-h"></i><span sec:authentication="name"></span></a>
                 <a href="admin-open-tickets.html" class="list-group-item">Todos los Tickets</a>
                 <a href="admin-support-cat.html" class="list-group-item"><i class="fas fa-user-friends"></i> Gestor de usuarios</a>
                 <a href="admin-change-password.html" class="list-group-item"><i class="fas fa-laptop"></i> Gestor de equipos</a>
