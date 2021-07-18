@@ -20,7 +20,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "equipos")
@@ -59,6 +58,37 @@ private boolean equipoAsignado = false;
 @OneToOne()
 @JoinColumn(name = "equipo")
 Categoria categoria;
+
+@OneToOne(fetch = FetchType.LAZY)
+
+Asignacion asignacion;
+
+
+
+
+
+
+
+
+
+public Asignacion getAsignacion() {
+    return asignacion;
+}
+
+
+
+
+
+
+
+public void setAsignacion(Asignacion asignacion) {
+    this.asignacion = asignacion;
+}
+
+
+
+
+
 
 
 public String getSerie() {

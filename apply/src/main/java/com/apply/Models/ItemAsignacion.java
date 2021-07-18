@@ -30,9 +30,65 @@ public class ItemAsignacion implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer cantidad;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "equipo_id")
+    private Equipo equipo;
 
-    private Categoria categoria;
+    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+
+    public Dispositivo getDispositivo() {
+        return dispositivo;
+    }
+
+
+    public void setDispositivo(Dispositivo dispositivo) {
+        this.dispositivo = dispositivo;
+    }
+
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+
+    public Date getCreadoEn() {
+        return CreadoEn;
+    }
+
+
+    public void setCreadoEn(Date creadoEn) {
+        CreadoEn = creadoEn;
+    }
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dispositivo_id")
@@ -44,7 +100,6 @@ public class ItemAsignacion implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_at")
     private Date CreadoEn;
-    
 
 
 

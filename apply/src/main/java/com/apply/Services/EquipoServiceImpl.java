@@ -64,7 +64,6 @@ public class EquipoServiceImpl implements IEquipoService{
     @Transactional
     public void delete(Long id) {
         equipoDao.deleteById(id);
-        
     }
 
 

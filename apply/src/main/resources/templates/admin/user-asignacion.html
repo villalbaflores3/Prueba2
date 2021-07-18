@@ -1,14 +1,16 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="layout/layout ::head">
 </head>
+
 <body>
-    <header th:replace="layout/layout ::header"></header>    
- 
+    <header th:replace="layout/layout ::header"></header>
+
     <section id="main">
         <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/admin}">Admin</a>
+                <a class="nav-link" th:href="@{/admin}">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Asignacion</a>
@@ -18,25 +20,62 @@
             <div class="row">
                 <div class="col-xl-9 col-md-8 col-sm-6 col-12">
 
-                    <div class="hr-div"> <hr />
+                    <div class="hr-div">
+                        <hr />
                     </div>
 
 
                     <div class="card bg-light">
-                        <div class="card-header" th:text = "${titulo}"></div>
-                        
-                        <form action="@{/asignacion/form}" th:object="${equipo}" method="POST" style="display: flex; justify-content: center;">
-                            <input type="text" th:value="${equipo.empleado.nombre} + ' ' + ${equipo.empleado.apellido}" disabled>
+                        <div class="card-header" th:text="${titulo}"></div>
 
-                                <label class="col-form-label" th:text ="'Descripcion'"></label>
+                        <form th:action="@{/asignacion/save}" th:object="${Empleado}" method="POST">
+
+                            <div class="card-header" > </div>
+
+                            <div class="card-body bg-light">
+                                <input type="hidden"   th:value="${asignacion.empleado.id}" name="idEmpleado">
+                                <input type="text"
+                                    th:value="${asignacion.empleado.nombre} + ' ' + ${asignacion.empleado.apellido}"
+                                    disabled
+                                    name="${asignacion.empleado.nombre}">
+                            </div>
+
+                            <div class="ucard-footer">
+                                <label>Descripcion</label>
+                                <textarea class="form-control" th:value="${asignacion.descripcion}" name="descripcion"></textarea>
+                            </div>
+
+                            <div class="card-header bg-light">
+                                <div class="card-body">
+                                     Seleccionar Equipo   
+                                </div>
+                                <table class="table table-bordered">
+
+                                    <tr th:each="equipo : ${equipos}">
+                                        <td class="form-check">
+                                            <input class="form-check-input" type="radio" th:check="${equipo.id}"  th:value ="${equipo.id}"  name="equipoId" required>
+                                        </td>
+                                        <td th:text="${equipo.marca}"></td>
+                                        <td th:text="${equipo.modelo}"></td>
+                                        <td th:text="${equipo.procesador}"></td>
+                                        <td th:text="${equipo.fechaAlta}"></td>
+                                        <td class="bg-primary"><a th:href="@{'/equipo/' + ${equipo.id}}" class="text-white" th:text ="'Ver'" style="padding: 10px;"></a></td>
+                                    </tr>
+
     
+                                </table>
+    
+    
+                            </div>
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-success">Asignar</button>
+                            </div>
+                            </table>
+
+
+
 
                         </form>
-
-                        <div class="table-responsive">
-                            
-                        <div class="card-header" th:text = "'Dispositivos asignados'" style="text-align: center;"></div>
-                    </div>
 
 
                     </div>
@@ -51,4 +90,5 @@
 
     <div th:replace="layout/layout :: script"></div>
 </body>
+
 </html>

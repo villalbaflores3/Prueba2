@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.apply.Models.Asignacion;
 import com.apply.Models.Empleado;
+import com.apply.Models.Equipo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +19,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public class EmpleadoImpl implements IEmpleado {
 
+    @Autowired
+    IAsignacion asignacionDao;
+    
+    @Autowired
+    IEquipo equipoDao;
+
+
     @PersistenceContext
     private EntityManager em;
+
 
     @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
@@ -77,7 +88,36 @@ public class EmpleadoImpl implements IEmpleado {
       Empleado empleado = findOne(id);
       em.remove(empleado); 
     }
+
+
+
+  
+
     
+    @Override
+    @Transactional
+    public void saveAsignacion(Asignacion asignacion) {
+    
+        asignacionDao.save(asignacion);
+    }
+
+
+
+    @Override
+    @Transactional (readOnly = true)
+    public Equipo findEquipoById(Long id) {
+    
+        return equipoDao.findById(id).orElse(null);
+    }
+
+
+
+    @Override
+    public void saveEquipo(Long idEquipo, Long id) {
+        // TODO Auto-generated method stub
+        
+    }
+
 
 
 }
