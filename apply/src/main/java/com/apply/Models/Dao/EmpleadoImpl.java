@@ -114,9 +114,10 @@ public class EmpleadoImpl implements IEmpleado {
 
     @Override
     public void saveEquipo(Long idEquipo, Long id) {
-        // TODO Auto-generated method stub
-        
+
     }
+
+
 
 
 

@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <h4><span>Telefono TI: </span> 01-4589-987-567</h4>
-                    <h4><span>E-mail TI:</span> soporte@domain.com</h4>
+                    <h4><span>E-mail TI:</span> soporte@apply.com</h4>
                 </div>
                 
             </div>
@@ -59,8 +59,8 @@
                       <li class="breadcrumb-item active justify-content-between" sec:authentication ="principal.authorities"></li>
                     </ol>
                 </nav>
-                <a href="admin-dashboard.html" class="list-group-item"><i class="fas fa-sliders-h"></i><span sec:authentication="name"></span></a>
-                <a href="admin-open-tickets.html" class="list-group-item">Todos los Tickets</a>
+                <a th:href="@{/admin}" class="list-group-item"><i class="fas fa-sliders-h"></i>Admin</span></a>
+                <a th:href="@{/user}" class="list-group-item"><i class="fas fa-home"></i><span sec:authentication="name"></span></a>
                 <a href="admin-support-cat.html" class="list-group-item"><i class="fas fa-user-friends"></i> Gestor de usuarios</a>
                 <a href="admin-change-password.html" class="list-group-item"><i class="fas fa-laptop"></i> Gestor de equipos</a>
             </div>

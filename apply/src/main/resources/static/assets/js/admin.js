@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-
+$("#fecha").val("ss");
 
 urls();
 

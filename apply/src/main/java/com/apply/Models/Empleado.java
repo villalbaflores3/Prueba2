@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -40,6 +41,32 @@ private String apellido;
 
 
 private String password;
+
+
+private String role;
+
+@OneToOne
+private OrdenCompra ordenCompra;
+
+
+
+
+public OrdenCompra getOrdenCompra() {
+    return ordenCompra;
+}
+
+public void setOrdenCompra(OrdenCompra ordenCompra) {
+    this.ordenCompra = ordenCompra;
+}
+
+public String getRole() {
+    return role;
+}
+
+public void setRole(String role) {
+    this.role = role;
+}
+
 
 
 @Column(unique = true)
@@ -219,8 +246,14 @@ public void addTicket(Ticket ticket){
 public void addEquipo(Equipo equipo){
 
     equipos.add(equipo);
+}
+
+public void addOrdenCompra(OrdenCompra orden){
+
+    this.ordenCompra = orden;
 
 }
+
 
 }
 
