@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout ::head">
+</head>
+<body>
+    <header th:replace="layout/layout ::header"></header>    
+ 
+    
+    <section id="main" >
+
+        <div class="row">
+
+            <div class="col-xl-9 col-md-8 col-sm-6 col-12"> 
+                <div class="row">
+
+                    <form th:action="@{/inicio/save}" style="width: 80%; display: flex; margin: auto;" method="POST">
+
+                        <div style="width: 100%; display: flex; justify-content: center; flex-flow: column nowrap;">
+                            <div style="width: 100%;">
+                                    <div class="img" style="width: 15%; height: 15%;">
+                                        <img src="/assets/img/registro.png" style="width: 100%; height: 100%;">
+                                    </div>
+                            </div>
+                            <div style="width: 100%;">
+                                <label for="folio">Folio</label>
+                                <input class="form-control" type="text" name="FOLIO" placeholder="Folio">
+                            </div>
+
+                            <div style="width: 100%;">
+                                <label for="producto">Producto</label>
+                                <input class="form-control" type="text" name="producto" placeholder="Descripcion">
+                            </div>
+
+                            <div style="width: 100%;">
+                                <label for="producto">Producto</label>
+                                <input class="form-control" type="text" name="producto" placeholder="Descripcion">
+                            </div>
+                       
+                            <div style="width: 100%;">
+                                <textarea class="form-control" name="descripcion" placeholder="Descripcion"></textarea>
+                            </div>
+
+                                                   
+                            <div style="width: 100%; display: flex; justify-content: space-around;">
+                                <div>
+                                    <label for="cantidad">Cantidad a comprar</label>
+                                    <input type="number" name="cantidad" class="form-control">
+                                </div>
+
+                                <div>
+                                    <label for="precio">Precio por cada uno</label>
+                                    <input type="number" name="precio" class="form-control">
+                                </div>
+                            </div>
+                            <div style="width: 100%; display: flex; justify-content: space-around;">
+                            
+                                <button type="submit" class="btn btn-success">  
+                                        GENERAR COMPRA
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                <div th:replace="layout/layout :: admin-menu"> </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+
+    
+    <div th:replace="layout/layout :: script"></div>
+
+</body>
+</html>

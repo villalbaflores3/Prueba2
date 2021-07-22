@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PageController {
 
+    @RequestMapping(value = "/proveedores", method = RequestMethod.GET)
+    public String pageProveedores(Model model) {
+        model.addAttribute("titulo", "Factura para proveedores");
+        return "admin/proveedor";
+    }
+
 
     
     @RequestMapping(value = "/user", method = RequestMethod.GET)
