@@ -13,42 +13,32 @@
             <div class="col-xl-9 col-md-8 col-sm-6 col-12"> 
                 <div class="row">
 
-
                         <div style="width: 100%; display: flex; justify-content: center; flex-flow: column nowrap;">
                             <div style="width: 100%;">
                                     <div class="img" style="width: 15%; height: 15%;">
                                         <img src="/assets/img/registro.png" style="width: 100%; height: 100%;">
                                     </div>
                             </div>
-
-
-
-                            <div style="width: 80%; margin: auto;">
-                                <form th:action="@{/proveedores/folio}" th:method="get" th:object="${factura}">
-                                    <label for="folio">Folio de la compra</label>
-                                    <input class="form-control" type="text" placeholder="Folio" th:field="*{folio}">
-                                    <button type="submit" class="btn btn-info">  
-                                       OK
-                                     </button>
+                            <div style="width: 100%;">
+                                <form th:action="@{/proveedores}" th:method="get" th:object="${factura}">
+                                    <label for="folio">Orden de compra</label>
+                                    <input class="form-control" type="text" name="ordenCompra" placeholder="Orden de compra" th:field="oCompra">
+                                    <button type="submit" class="btn btn-success">OK</button>
                                 </form>
+ 
                             </div>
-                            
-
-
-
-                            
-                            <div class="row" th:each="datos : ${facturas}" style="width: 80%; margin: auto;">
+                            <div class="row" th:each="factura : ${facturas}">
                                 <div style="width: 100%;">
-                                    <label for="orden">Orden de compra</label>
-                                    <input class="form-control" type="text" name="orden" th:value="${datos.ordenCompra}" disabled>
+                                    <label for="folio">Proveedor</label>
+                                    <input class="form-control" type="text" name="proveedor" th:value="${factura.folio}" disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="folio">Producto</label>
-                                    <input class="form-control" type="text" name="proveedor" th:value="${datos.producto}" disabled>
+                                    <input class="form-control" type="text" name="proveedor" th:value="${factura.producto}" disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="folio">Precio Total</label>
-                                    <input class="form-control" type="text" name="proveedor" th:value="${datos.total}"  disabled>
+                                    <input class="form-control" type="text" name="proveedor" th:value="${factura.total}"  disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="producto">Subir CFDI</label>
@@ -67,8 +57,6 @@
 
 
                         </div>
-
-
 
                 </div>
             </div>

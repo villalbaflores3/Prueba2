@@ -42,7 +42,7 @@ public class ProveedorController {
     public String guardar(Factura factura,  RedirectAttributes flash){
         
 
-        String orden = factura.getoCompra();
+        String orden = factura.getOrdenCompra();
         int cantidad = factura.getCantidad();
         float precio = factura.getPrecio();
         float total = cantidad * precio;

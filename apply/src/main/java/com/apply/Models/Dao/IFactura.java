@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IFactura extends CrudRepository<Factura, Long> {
 
-    List<Factura> findByoCompra(String oCompra);
+    List<Factura> findByFolio(String folio);
+    List<Factura> findByOrdenCompra(String orden);
     
 }

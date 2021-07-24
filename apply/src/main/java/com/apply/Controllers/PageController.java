@@ -1,23 +1,40 @@
 package com.apply.Controllers;
 
 import com.apply.Models.Empleado;
+import com.apply.Models.Factura;
 import com.apply.Models.Dao.IEmpleado;
+import com.apply.Models.Dao.IFactura;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
 
-    
-
+    @Autowired
+    IFactura facturaDao;
 
     @RequestMapping(value = "/proveedores", method = RequestMethod.GET)
     public String pageProveedores(Model model) {
+        
+        Factura factura = new Factura();
         model.addAttribute("titulo", "Factura para proveedores");
+        model.addAttribute("factura", factura);
+        return "proveedores";
+    }
+
+
+    
+    @RequestMapping(value = "/proveedores/folio", method = RequestMethod.GET)
+    public String buscarProveedor(@RequestParam String folio,  Model model, @ModelAttribute("factura") Factura factura) {
+        model.addAttribute("titulo", "Resultado de busqueda");
+        model.addAttribute("facturas", facturaDao.findByFolio(folio));
         return "proveedores";
     }
 

@@ -45,8 +45,8 @@ public class Factura  implements Serializable{
 
     private String proveedor;
 
-    @Column(unique = true)
-    private String oCompra = "OD" + numeroaletorio();
+    @Column(name = "o_compra",  unique = true)
+    private String ordenCompra = "OD" + numeroaletorio();
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -79,14 +79,15 @@ public class Factura  implements Serializable{
 
 
 
-    public String getoCompra() {
-        return oCompra;
+
+    public String getOrdenCompra() {
+        return ordenCompra;
     }
 
 
 
-    public void setoCompra(String oCompra) {
-        this.oCompra = oCompra;
+    public void setOrdenCompra(String ordenCompra) {
+        this.ordenCompra = ordenCompra;
     }
 
 
