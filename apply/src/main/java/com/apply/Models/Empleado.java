@@ -88,10 +88,21 @@ private List<Equipo> equipos;
 @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 private List<Asignacion> asignaciones;
 
+@OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+private List<Factura> facturas;
 
 
 
 
+
+
+public List<Factura> getFacturas() {
+    return facturas;
+}
+
+public void setFacturas(List<Factura> facturas) {
+    this.facturas = facturas;
+}
 
 public void addAsignacion(Asignacion asignacion){
     asignaciones.add(asignacion);

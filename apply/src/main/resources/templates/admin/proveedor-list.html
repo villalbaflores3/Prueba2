@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout ::head">
+</head>
+<body>
+    <header th:replace="layout/layout ::header"></header>    
+ 
+    
+    <section id="main" >
+
+        <div class="row">
+
+            <div class="col-xl-9 col-md-8 col-sm-6 col-12"> 
+                <div class="row">
+
+                    <div style="width: 80%; display: flex; margin: auto;">
+
+                        <div style="width: 100%; display: flex; justify-content: center; flex-flow: column nowrap;">
+                            <div style="width: 100%;">
+                                    <div class="img" style="width: 15%; height: 15%;">
+                                        <img src="/assets/img/registro.png" style="width: 100%; height: 100%;">
+                                    </div>
+                                    <div>
+                                        <a th:href="@{/admin/proveedores/inicio}" class="btn btn-info">+</a>
+                                      
+                                    </div>
+                            </div>
+                            <div style="width: 100%;">
+                                
+                                <table class="table">
+                                    <thead>
+                                            <tr>
+                                                <th>Orden de Compra</th>
+                                                <th>Folio</th>
+                                                <th>Razon social</th>
+                                                <th>Producto</th>                                               
+                                                <th>proveedor</th>
+                                                <th>Precio Total</th>
+                                                <th>Estado</th>
+                                            </tr>                                        
+                                    </thead>
+                                    <tbody>
+                                     <tr th:each="factura: ${facturas}">
+                                        <td th:text="${factura.oCompra}"></td>
+                                        <td th:text="${factura.folio}"></td>
+                                        <td th:text="${factura.razonSocial}"></td>
+                                        <td th:text="${factura.producto}"></td>
+                                        <td th:text="${factura.proveedor}"></td>     
+                                        <td th:text="${factura.total}"></td>                                        
+                                        <td th:if="${factura.status}" th:text="'CERRADO'"></td>
+                                        <td th:unless="${factura.status}" th:text="'ABIERTO'"></td>
+                                     </tr>
+                                    </tbody>
+                                </table>
+     
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                <div th:replace="layout/layout :: admin-menu"> </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+
+    
+    <div th:replace="layout/layout :: script"></div>
+
+</body>
+</html>

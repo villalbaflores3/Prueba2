@@ -13,7 +13,7 @@
             <div class="col-xl-9 col-md-8 col-sm-6 col-12"> 
                 <div class="row">
 
-                    <form th:action="@{/inicio/save}" style="width: 80%; display: flex; margin: auto;" method="POST">
+                    <form th:action="@{/admin/proveedores/inicio/save}" th:object="${factura}" style="width: 80%; display: flex; margin: auto;" method="post">
 
                         <div style="width: 100%; display: flex; justify-content: center; flex-flow: column nowrap;">
                             <div style="width: 100%;">
@@ -23,43 +23,48 @@
                             </div>
                             <div style="width: 100%;">
                                 <label for="folio">Folio</label>
-                                <input class="form-control" type="text" name="folio" placeholder="Folio">
+                                <input class="form-control" type="text" name="FOLIO" placeholder="Folio" th:field="*{folio}">
                             </div>
+
                             <div style="width: 100%;">
-                                <label for="producto">Razon Social</label>
-                                <input class="form-control" type="text" name="razonSocial" placeholder="Razon social">
+                                <label for="producto">Razon social</label>
+                                <input class="form-control" type="text" name="producto" placeholder="Descripcion" th:field="*{razonSocial}">
+                            </div>
+
+                            <div style="width: 100%;">
+                                <label for="producto">Producto</label>
+                                <input class="form-control" type="text" name="producto" placeholder="Producto" th:field="*{producto}">
                             </div>
                        
                             <div style="width: 100%;">
-                                <textarea class="form-control" name="descripcion" placeholder="Descripcion"></textarea>
+                                <textarea class="form-control" name="descripcion" placeholder="Descripcion" th:field="*{descripcion}"></textarea>
+                            </div>
+
+                                   
+                            <div style="width: 100%;">
+                                <input  type="text" class="form-control" name="proveedor" placeholder="Proveedor" th:field="*{proveedor}">
                             </div>
 
                                                    
                             <div style="width: 100%; display: flex; justify-content: space-around;">
                                 <div>
                                     <label for="cantidad">Cantidad a comprar</label>
-                                    <input type="number" name="cantidad" class="form-control">
+                                    <input type="number" name="cantidad" class="form-control" th:field="*{cantidad}">
                                 </div>
 
                                 <div>
                                     <label for="precio">Precio por cada uno</label>
-                                    <input type="number" name="precio" class="form-control">
+                                    <input type="number" name="precio" class="form-control" th:field="*{precio}">
                                 </div>
                             </div>
                             <div style="width: 100%; display: flex; justify-content: space-around;">
+                                <input type="hidden" name="status" value="false" th:field="*{status}">
                             
                                 <button type="submit" class="btn btn-success">  
                                         GENERAR COMPRA
                                 </button>
 
                             </div>
-
-
-                            <div style="width: 100%;">
-                                <label for="odc">ODC</label>
-                                <input class="form-control" type="text" name="odc" placeholder="Orden de compra">
-                            </div>
-
 
                         </div>
 
