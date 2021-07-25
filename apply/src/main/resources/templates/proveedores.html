@@ -38,22 +38,28 @@
 
                             
                             <div class="row" th:each="datos : ${facturas}" style="width: 80%; margin: auto;">
+                                <div style="width: 100%;" th:text="${info}"> </div>
+                            <form th:action="@{'/proveedores/folio/save/' + ${datos.folio} }" method="POST" th:object="${datos}" enctype="multipart/form-data">
                                 <div style="width: 100%;">
+                                    <input class="form-control" type="hidden" th:name="id" th:value="${datos.id}" disabled>
                                     <label for="orden">Orden de compra</label>
-                                    <input class="form-control" type="text" name="orden" th:value="${datos.ordenCompra}" disabled>
+                                    <input class="form-control" type="text" th:name="orden" th:value="${datos.ordenCompra}" disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="folio">Producto</label>
-                                    <input class="form-control" type="text" name="proveedor" th:value="${datos.producto}" disabled>
+                                    <input class="form-control" type="text" name="producto" th:value="${datos.producto}" disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="folio">Precio Total</label>
-                                    <input class="form-control" type="text" name="proveedor" th:value="${datos.total}"  disabled>
+                                    <input class="form-control" type="text" name="total" th:value="${datos.total}"  disabled>
                                 </div>
                                 <div style="width: 100%;">
                                     <label for="producto">Subir CFDI</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>
+                                    <input type="file" class="form-control-file" id="cfdi" name="file">
+                                </div> 
+
+                        
+
 
                             </div>
 
@@ -64,7 +70,7 @@
                                         GENERAR COMPRA
                                 </button>
                             </div>
-
+                        </form>
 
                         </div>
 

@@ -37,6 +37,7 @@
                                                 <th>proveedor</th>
                                                 <th>Precio Total</th>
                                                 <th>Estado</th>
+                                                <th>XML</th>
                                             </tr>                                        
                                     </thead>
                                     <tbody>
@@ -49,6 +50,9 @@
                                         <td th:text="${factura.total}"></td>                                        
                                         <td th:if="${factura.status}" th:text="'CERRADO'"></td>
                                         <td th:unless="${factura.status}" th:text="'ABIERTO'"></td>
+                                        <td th:if="${factura.status}"> <a th:href="@{'/upload/'  +  ${factura.xml}}" th:text="'XML'"> </a></td>
+                 
+                                        <td ></td>   
                                      </tr>
                                     </tbody>
                                 </table>

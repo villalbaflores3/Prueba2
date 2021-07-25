@@ -57,6 +57,21 @@ public class Factura  implements Serializable{
     @Column(columnDefinition = "boolean default false")
     private Boolean  status;
 
+
+    private String xml;
+
+    
+    public String getXml() {
+        return xml;
+    }
+
+
+
+    public void setXml(String xml) {
+        this.xml = xml;
+    }
+
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
     
