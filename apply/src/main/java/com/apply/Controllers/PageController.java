@@ -57,9 +57,9 @@ public class PageController {
     RedirectAttributes flash) {
         
         if (!xml.isEmpty()) {
-            
-            Path directorioRecurso = Paths.get("src//main//resources//static/upload");
-            String rootPath = directorioRecurso.toFile().getAbsolutePath();
+             
+
+            String rootPath = "C://Temp//upload";
             
             try {                
 
