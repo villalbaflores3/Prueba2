@@ -52,12 +52,16 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
         http.authorizeRequests().antMatchers("/", "/assets/**","/proveedores").permitAll().
+=======
+        http.authorizeRequests().antMatchers("/", "/assets/**").permitAll().
+>>>>>>> parent of b411413 (apply .67)
 =======
         http.authorizeRequests().antMatchers("/", "/assets/**").permitAll().
 >>>>>>> parent of b411413 (apply .67)
