@@ -14,16 +14,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+<<<<<<< Updated upstream
+=======
+import javax.persistence.ManyToMany;
+>>>>>>> Stashed changes
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 
 @Entity
-@Table(name = "empleados")
+@Table(name = "empleados", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
 public class Empleado  implements Serializable{
 
 private static final long serialVersionUID= 1L;
@@ -47,9 +52,29 @@ private String apellido;
 private String password;
 
 
+<<<<<<< Updated upstream
 @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 @JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 private Set<Role> roles;
+=======
+private List<Role> roles;
+
+private boolean enabled;
+
+@ManyToMany(fetch = FetchType.EAGER)
+@JoinTable(name = "autorities_empleados", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name ="authority_id"))
+private Set<Authority> authority;
+
+public boolean isEnabled() {
+    return enabled;
+}
+
+public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
+}
+
+
+>>>>>>> Stashed changes
 
 @OneToOne
 private OrdenCompra ordenCompra;
@@ -85,12 +110,25 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
     this.ordenCompra = ordenCompra;
 }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
 
-@Column(unique = true)
 @Email
 private String correo;
+
+public Set<Authority> getAuthority() {
+    return authority;
+}
+
+public void setAuthority(Set<Authority> authority) {
+    this.authority = authority;
+}
+
+
 
 @Column(name = "licencia_365")
 private String licencia365;
@@ -114,6 +152,18 @@ private List<Factura> facturas;
 
 
 
+
+
+
+
+
+public List<Role> getRoles() {
+    return roles;
+}
+
+public void setRoles(List<Role> roles) {
+    this.roles = roles;
+}
 
 public List<Factura> getFacturas() {
     return facturas;

@@ -28,6 +28,9 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btm-width">Entrar</button>
                             </div>
+                            <div class="alert alert-danger" th:if="${param.error}" >
+                                Empleado invalido
+                            </div>
                     </div>
 
                 </form>

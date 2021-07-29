@@ -1,6 +1,7 @@
 package com.apply.Models.Dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -116,6 +117,35 @@ public class EmpleadoImpl implements IEmpleado {
     public void saveEquipo(Long idEquipo, Long id) {
 
     }
+
+
+
+    @Override
+    public Empleado findByCorreo(String correo) {
+    
+        Query query = em.createQuery("SELECT e from Empleado e WHERE c.correo = ?1", Empleado.class);
+        String email = correo;
+        Empleado empl = (Empleado) query.setParameter(1, email).getSingleResult();
+        return empl;
+
+    }
+
+
+
+    @Override
+    
+    public Empleado findByNombre(String nombre) {
+        Query query = em.createQuery("SELECT e from Empleado e WHERE c.nombre = ?1", Empleado.class);
+        String name = nombre;
+        Empleado empl = (Empleado) query.setParameter(1, name).getSingleResult();
+        return empl;
+    }
+
+
+
+
+
+
 
 
 
