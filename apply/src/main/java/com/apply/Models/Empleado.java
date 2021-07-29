@@ -16,6 +16,7 @@ import javax.persistence.Id;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 <<<<<<< HEAD
@@ -36,6 +37,8 @@ import javax.persistence.ManyToMany;
 >>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
+=======
+>>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of b411413 (apply .67)
 import javax.persistence.OneToMany;
@@ -77,6 +80,7 @@ private String password;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 @JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -106,6 +110,8 @@ public boolean isEnabled() {
     return enabled;
 }
 =======
+=======
+>>>>>>> parent of b411413 (apply .67)
 private String role;
 
 @OneToOne
@@ -117,6 +123,9 @@ private OrdenCompra ordenCompra;
 =======
 >>>>>>> parent of b411413 (apply .67)
 
+<<<<<<< HEAD
+>>>>>>> parent of b411413 (apply .67)
+=======
 >>>>>>> parent of b411413 (apply .67)
 
 public void setEnabled(boolean enabled) {
@@ -127,6 +136,7 @@ public void setEnabled(boolean enabled) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
@@ -149,6 +159,8 @@ private OrdenCompra ordenCompra;
 
 
 
+=======
+>>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of b411413 (apply .67)
 =======
@@ -172,11 +184,14 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of b411413 (apply .67)
 =======
@@ -196,6 +211,7 @@ public void setRole(String role) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
@@ -207,6 +223,8 @@ public void setRole(String role) {
 >>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
+=======
+>>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of b411413 (apply .67)
 
