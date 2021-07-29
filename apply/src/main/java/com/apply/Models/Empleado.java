@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 <<<<<<< HEAD
@@ -23,6 +24,8 @@ import javax.persistence.ManyToMany;
 >>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
+=======
+>>>>>>> parent of b411413 (apply .67)
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
@@ -57,6 +60,7 @@ private String password;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 @JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -73,12 +77,20 @@ private Set<Authority> authority;
 public boolean isEnabled() {
     return enabled;
 }
+=======
+private String role;
+
+@OneToOne
+private OrdenCompra ordenCompra;
+
+>>>>>>> parent of b411413 (apply .67)
 
 public void setEnabled(boolean enabled) {
     this.enabled = enabled;
 }
 
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
 private String role;
@@ -95,6 +107,8 @@ private OrdenCompra ordenCompra;
 
 
 
+=======
+>>>>>>> parent of b411413 (apply .67)
 public OrdenCompra getOrdenCompra() {
     return ordenCompra;
 }
@@ -105,11 +119,14 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> parent of b411413 (apply .67)
 public String getRole() {
     return role;
 }
@@ -117,9 +134,12 @@ public String getRole() {
 public void setRole(String role) {
     this.role = role;
 }
+<<<<<<< HEAD
 >>>>>>> parent of b411413 (apply .67)
 =======
 >>>>>>> parent of 9a9f669 (apply .71)
+=======
+>>>>>>> parent of b411413 (apply .67)
 
 
 
