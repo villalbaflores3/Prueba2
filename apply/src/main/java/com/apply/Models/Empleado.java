@@ -14,22 +14,24 @@ import javax.persistence.Id;
 <<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import javax.persistence.ManyToMany;
 >>>>>>> Stashed changes
 =======
 >>>>>>> parent of b411413 (apply .67)
+=======
+>>>>>>> parent of 9a9f669 (apply .71)
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "empleados", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
+@Table(name = "empleados")
 public class Empleado  implements Serializable{
 
 private static final long serialVersionUID= 1L;
@@ -53,6 +55,7 @@ private String apellido;
 private String password;
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
@@ -80,6 +83,11 @@ public void setEnabled(boolean enabled) {
 =======
 private String role;
 >>>>>>> parent of b411413 (apply .67)
+=======
+@OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+@JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+private Set<Role> roles;
+>>>>>>> parent of 9a9f669 (apply .71)
 
 @OneToOne
 private OrdenCompra ordenCompra;
@@ -96,6 +104,7 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
@@ -109,21 +118,14 @@ public void setRole(String role) {
     this.role = role;
 }
 >>>>>>> parent of b411413 (apply .67)
+=======
+>>>>>>> parent of 9a9f669 (apply .71)
 
 
 
+@Column(unique = true)
 @Email
 private String correo;
-
-public Set<Authority> getAuthority() {
-    return authority;
-}
-
-public void setAuthority(Set<Authority> authority) {
-    this.authority = authority;
-}
-
-
 
 @Column(name = "licencia_365")
 private String licencia365;
@@ -147,18 +149,6 @@ private List<Factura> facturas;
 
 
 
-
-
-
-
-
-public List<Role> getRoles() {
-    return roles;
-}
-
-public void setRoles(List<Role> roles) {
-    this.roles = roles;
-}
 
 public List<Factura> getFacturas() {
     return facturas;

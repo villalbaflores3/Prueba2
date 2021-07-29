@@ -1,7 +1,6 @@
 package com.apply.Models.Dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.apply.Models.Asignacion;
 import com.apply.Models.Empleado;
@@ -21,9 +20,6 @@ public interface IEmpleado  {
     public void saveEquipo(Long idEquipo, Long id);
     public void saveAsignacion(Asignacion asignacion);
     public Equipo findEquipoById(Long id);
-
-    public Empleado findByCorreo(String correo);
-    public Empleado findByNombre(String nombre);
 
 
 }

@@ -47,7 +47,10 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> parent of 9a9f669 (apply .71)
         http.authorizeRequests().antMatchers("/", "/assets/**","/proveedores").permitAll().
 =======
         http.authorizeRequests().antMatchers("/", "/assets/**").permitAll().
@@ -55,19 +58,10 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
         antMatchers("/admin/**").access("hasRole('ADMIN')").   
         antMatchers("/empleado/*").access("hasRole('ADMIN')").   
         antMatchers("/user/**").hasAnyRole("ADMIN", "USER").
-=======
-        http.authorizeRequests().antMatchers("/", "/assets/**", "/proveedores").permitAll().
-            antMatchers("/admin/**").access("hasRole('ADMIN')").   
-            antMatchers("/empleado/*").access("hasRole('ADMIN')").   
-            antMatchers("/user/**").hasAnyRole("ADMIN", "USER").
->>>>>>> Stashed changes
         anyRequest().authenticated().
         and().
-        formLogin().loginPage("/login").failureUrl("/login?error=true")
-        .usernameParameter("username")
-        .passwordParameter("password")
-        .defaultSuccessUrl("/user", true).permitAll().
-        and().  
+        formLogin().loginPage("/login").defaultSuccessUrl("/user", true).permitAll().
+        and().
         logout().permitAll().and()
         .exceptionHandling().accessDeniedPage("/error_403");
 
