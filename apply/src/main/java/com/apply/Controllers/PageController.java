@@ -3,6 +3,7 @@ package com.apply.Controllers;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 import com.apply.Models.Empleado;
 import com.apply.Models.Factura;
@@ -58,16 +59,16 @@ public class PageController {
         
         if (!xml.isEmpty()) {
              
+            String uniqueFilename = UUID.randomUUID() +"-" + xml.getOriginalFilename();
+            Path rootPath = Paths.get("upload").resolve(uniqueFilename);
+            Path rootPathAbsolute = rootPath.toAbsolutePath();
 
-            String rootPath = "C://Temp//upload";
             
             try {                
 
-                byte[] bytes = xml.getBytes();
-                Path rutaCompleta = Paths.get( rootPath + "//"+ xml.getOriginalFilename());
-                Files.write(rutaCompleta, bytes);
+                Files.copy(xml.getInputStream(), rootPathAbsolute);
                 
-                facturaDao.CerrarFactura(xml.getOriginalFilename(), true, folio);
+                facturaDao.CerrarFactura(uniqueFilename, true, folio);
 
                 model.addAttribute("titulo", "Cargar archivo");
                 flash.addFlashAttribute("info", "Cargado exitosamente");
