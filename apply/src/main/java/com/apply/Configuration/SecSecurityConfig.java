@@ -1,14 +1,16 @@
 package com.apply.Configuration;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import com.apply.Models.Dao.EmpleadoReporsitory;
+import com.apply.Services.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -20,10 +22,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
+@EnableJpaRepositories(basePackageClasses = EmpleadoReporsitory.class )
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
     
-    private UserDetailsService userDetailsService;
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+    private HttpSecurity http;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -31,8 +37,33 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
         return new BCryptPasswordEncoder();
     }
 
+    
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    
+        auth.userDetailsService(userDetailsService)
+        .passwordEncoder(new PasswordEncoder(){
+
+            @Override
+            public String encode(CharSequence charSequence) {
+                return charSequence.toString();
+            }
+
+            @Override
+            public boolean matches(CharSequence arg0, String arg1) {
+                // TODO Auto-generated method stub
+                return true;
+            }
 
 
+                
+
+        });
+    }
+
+
+
+/*
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
 
@@ -43,10 +74,10 @@ public class SecSecurityConfig  extends WebSecurityConfigurerAdapter{
         .withUser(users.username("Alejandra").password("123").roles("USER"));
     }
 
-
+*/  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/assets/**").permitAll().
+        http.authorizeRequests().antMatchers("/", "/assets/**","/proveedores").permitAll().
         antMatchers("/admin/**").access("hasRole('ADMIN')").   
         antMatchers("/empleado/*").access("hasRole('ADMIN')").   
         antMatchers("/user/**").hasAnyRole("ADMIN", "USER").
