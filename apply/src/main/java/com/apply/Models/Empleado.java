@@ -3,7 +3,6 @@ package com.apply.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,12 +11,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 <<<<<<< Updated upstream
 =======
 import javax.persistence.ManyToMany;
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of b411413 (apply .67)
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
@@ -25,7 +27,6 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
 
 @Entity
 @Table(name = "empleados", uniqueConstraints = @UniqueConstraint(columnNames = "correo"))
@@ -52,6 +53,7 @@ private String apellido;
 private String password;
 
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 @OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 @JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -75,32 +77,15 @@ public void setEnabled(boolean enabled) {
 
 
 >>>>>>> Stashed changes
+=======
+private String role;
+>>>>>>> parent of b411413 (apply .67)
 
 @OneToOne
 private OrdenCompra ordenCompra;
 
-private int active;
 
 
-
-
-
-
-public Set<Role> getRoles() {
-    return roles;
-}
-
-public void setRoles(Set<Role> roles) {
-    this.roles = roles;
-}
-
-public int getActive() {
-    return active;
-}
-
-public void setActive(int active) {
-    this.active = active;
-}
 
 public OrdenCompra getOrdenCompra() {
     return ordenCompra;
@@ -110,10 +95,20 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
     this.ordenCompra = ordenCompra;
 }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
 >>>>>>> Stashed changes
+=======
+public String getRole() {
+    return role;
+}
+
+public void setRole(String role) {
+    this.role = role;
+}
+>>>>>>> parent of b411413 (apply .67)
 
 
 
@@ -240,16 +235,6 @@ public Empleado(){
     }
     
 
-
-public Empleado(Empleado empleado) {
-    this.active = empleado.getActive();
-    this.correo = empleado.getCorreo();
-    this.roles = empleado.getRoles();
-    this.nombre = empleado.getNombre();
-    this.apellido = empleado.getApellido();
-    this.id = empleado.getId();
-    this.password = empleado.getPassword();
-}
 
 public Long getId() {
     return id;

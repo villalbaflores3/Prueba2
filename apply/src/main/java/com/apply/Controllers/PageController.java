@@ -10,7 +10,6 @@ import com.apply.Models.Dao.IEmpleado;
 import com.apply.Models.Dao.IFactura;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -93,7 +92,6 @@ public class PageController {
 
     
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    @PreAuthorize("permitAll()")
     public String pageHomeUser(Model model) {
         model.addAttribute("titulo", "Home");
         return "user-dashboard";
