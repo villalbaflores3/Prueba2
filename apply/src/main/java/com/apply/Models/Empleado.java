@@ -3,7 +3,6 @@ package com.apply.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,15 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
 
 @Entity
 @Table(name = "empleados")
@@ -47,35 +43,13 @@ private String apellido;
 private String password;
 
 
-@OneToMany(fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
-@JoinTable(name = "empleado_role", joinColumns = @JoinColumn(name = "empleado_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-private Set<Role> roles;
+private String role;
 
 @OneToOne
 private OrdenCompra ordenCompra;
 
-private int active;
 
 
-
-
-
-
-public Set<Role> getRoles() {
-    return roles;
-}
-
-public void setRoles(Set<Role> roles) {
-    this.roles = roles;
-}
-
-public int getActive() {
-    return active;
-}
-
-public void setActive(int active) {
-    this.active = active;
-}
 
 public OrdenCompra getOrdenCompra() {
     return ordenCompra;
@@ -85,6 +59,13 @@ public void setOrdenCompra(OrdenCompra ordenCompra) {
     this.ordenCompra = ordenCompra;
 }
 
+public String getRole() {
+    return role;
+}
+
+public void setRole(String role) {
+    this.role = role;
+}
 
 
 
@@ -190,16 +171,6 @@ public Empleado(){
     }
     
 
-
-public Empleado(Empleado empleado) {
-    this.active = empleado.getActive();
-    this.correo = empleado.getCorreo();
-    this.roles = empleado.getRoles();
-    this.nombre = empleado.getNombre();
-    this.apellido = empleado.getApellido();
-    this.id = empleado.getId();
-    this.password = empleado.getPassword();
-}
 
 public Long getId() {
     return id;
